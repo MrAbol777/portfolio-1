@@ -14,8 +14,12 @@ export default defineConfig({
       },
     },
   },
-  // Add this to handle client-side routing
   server: {
     historyApiFallback: true
+  },
+  // Add this for GitHub Pages
+  preview: {
+    host: true,
+    port: 3000,
   }
 })
