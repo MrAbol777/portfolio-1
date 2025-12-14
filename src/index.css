@@ -1,0 +1,327 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Vazirmatn', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+  color: #333333;
+  direction: rtl;
+  text-align: right;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1a3d2c;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #d4a373;
+}
+
+/* Screen reader only class */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Skip link for accessibility */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #1a3d2c;
+  color: white;
+  padding: 8px;
+  z-index: 1000;
+  transition: top 0.3s;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Focus styles for accessibility */
+:focus {
+  outline: 2px solid #d4a373;
+  outline-offset: 2px;
+}
+
+/* High contrast mode */
+.high-contrast {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+.high-contrast .bg-primary {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
+.high-contrast .text-primary {
+  color: #ffffff !important;
+}
+
+/* Large text mode */
+.large-text {
+  font-size: 1.2em;
+}
+
+.large-text .text-sm {
+  font-size: 1em;
+}
+
+.large-text .text-base {
+  font-size: 1.2em;
+}
+
+.large-text .text-lg {
+  font-size: 1.4em;
+}
+
+.large-text .text-xl {
+  font-size: 1.6em;
+}
+
+.large-text .text-2xl {
+  font-size: 1.8em;
+}
+
+.large-text .text-3xl {
+  font-size: 2em;
+}
+
+.large-text .text-4xl {
+  font-size: 2.2em;
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary text-white px-6 py-3 rounded-lg hover:bg-opacity-90 transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary;
+  }
+  
+  .section-padding {
+    @apply py-16 px-4 sm:px-6 lg:px-8;
+  }
+  
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold text-center mb-12 text-primary relative inline-block mx-auto;
+  }
+  
+  .section-title::after {
+    @apply absolute bottom-[-10px] left-1/2 transform -translate-x-1/2 w-20 h-1 bg-accent rounded-full content-[''];
+  }
+  
+  /* RTL adjustments */
+  .rtl-flex {
+    @apply flex flex-row-reverse;
+  }
+  
+  .rtl-text {
+    @apply text-right;
+  }
+  
+  /* Enhanced mobile navigation */
+  .mobile-menu {
+    @apply md:hidden fixed inset-0 bg-white z-50 flex flex-col items-center justify-center transition-all duration-300 ease-in-out;
+  }
+  
+  .mobile-menu-item {
+    @apply text-2xl font-medium my-4 text-gray-700 hover:text-primary transition-colors duration-300 focus:outline-none focus:text-primary py-3 px-6 rounded-lg hover:bg-gray-100;
+  }
+  
+  /* Card hover effects */
+  .card-hover {
+    @apply transition-all duration-300 transform hover:-translate-y-2 hover:shadow-xl focus-within:shadow-xl;
+  }
+  
+  /* Form inputs */
+  .form-input {
+    @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300;
+  }
+  
+  /* Gallery item */
+  .gallery-item {
+    @apply overflow-hidden rounded-xl shadow-md transition-all duration-300 transform hover:scale-105 hover:shadow-xl focus-within:shadow-xl;
+  }
+  
+  /* Animation classes */
+  .animate-on-scroll {
+    @apply opacity-0 translate-y-10 transition-all duration-700 ease-out;
+  }
+  
+  .animate-on-scroll.animated {
+    @apply opacity-100 translate-y-0;
+  }
+  
+  /* Enhanced touch targets */
+  .touch-target {
+    @apply min-h-[44px] min-w-[44px] flex items-center justify-center;
+  }
+  
+  /* Mobile-specific enhancements */
+  .mobile-enhanced {
+    @apply transition-all duration-200 active:scale-95;
+  }
+  
+  /* Accessibility controls - removed as per user request */
+  
+  /* UI Enhancement classes */
+  .hover-enhanced {
+    @apply transform scale-105 transition-transform duration-200;
+  }
+  
+  .clicked {
+    @apply transform scale-95 transition-transform duration-150;
+  }
+  
+  /* Ripple effect */
+  .ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.7);
+    transform: scale(0);
+    animation: ripple 0.6s linear;
+    pointer-events: none;
+  }
+  
+  @keyframes ripple {
+    to {
+      transform: scale(2);
+      opacity: 0;
+    }
+  }
+  
+  /* Loading states */
+  .loading-spinner {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    border: 2px solid transparent;
+    border-top-color: currentColor;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-left: 0.5rem;
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .submitting {
+    @apply opacity-75 cursor-not-allowed;
+  }
+  
+  /* Skeleton loaders */
+  .skeleton-loader {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+    border-radius: 4px;
+  }
+  
+  .skeleton-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+    z-index: -1;
+  }
+  
+  @keyframes loading {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+  
+  /* Enhanced section titles */
+  .section-title.enhanced::after {
+    @apply w-24;
+    transition: width 0.5s ease;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .section-title {
+    @apply text-2xl;
+  }
+  
+  .section-title::after {
+    @apply w-16 bottom-[-8px];
+  }
+  
+  .btn-primary {
+    @apply px-5 py-2.5 text-base;
+  }
+  
+  /* Ensure proper touch targets on mobile */
+  button, a, input, select, textarea {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Enhanced mobile menu item spacing */
+  .mobile-menu-item {
+    @apply text-xl my-3 py-4;
+  }
+  
+  /* Mobile-specific padding adjustments */
+  .mobile-padding {
+    @apply px-4;
+  }
+  
+  /* Improved mobile form elements */
+  .mobile-form-input {
+    @apply py-4 text-base;
+  }
+  
+  /* Hide desktop-only elements on mobile */
+  .desktop-only {
+    @apply hidden;
+  }
+}
+
+/* Low power mode adjustments */
+.low-power * {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+}
+
+/* Landscape mode adjustments */
+.landscape .mobile-only {
+  display: none;
+}
+
+/* Portrait mode adjustments */
+.portrait .desktop-only {
+  display: none;
+}
